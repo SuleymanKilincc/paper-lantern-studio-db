@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16
+    container_name: company-postgres
+    environment:
+      POSTGRES_USER: company_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: company_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - company_pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: company-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5051:80"
+
+volumes:
+  company_pgdata:
