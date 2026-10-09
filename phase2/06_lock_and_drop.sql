@@ -1,0 +1,2 @@
+ALTER TABLE employees ALTER COLUMN job_id SET NOT NULL;
+ALTER TABLE employees DROP COLUMN job_title;
